@@ -10,7 +10,7 @@
 import ipaddress
 import requests
 import logging
-import FlashApplication
+import Flask_Application
 
 #Configure the logging logic for the notification script
 logging.basicConfig(
