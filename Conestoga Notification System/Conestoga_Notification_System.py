@@ -14,7 +14,7 @@ import FlashApplication
 
 #Configure the logging logic for the notification script
 logging.basicConfig(
-    filename='notification_script.log',
+    filename=r'C:\Users\nick_\Desktop\notification_script.log', 
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )

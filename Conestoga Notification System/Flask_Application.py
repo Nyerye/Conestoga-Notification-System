@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import logging
 from datetime import datetime
 
-#nitializes the Flask application to handle incoming requests and direct them to the appropriate routes.
+#Initializes the Flask application to handle incoming requests and direct them to the appropriate routes.
 app = Flask(__name__)
 
 #Configure the logging to collect info on Flask server processes
@@ -13,11 +13,12 @@ logging.basicConfig(
     format='%(asctime)s - %(message)s'
 )
 
-# Sample data: notification types and sites
+#Sample data: notification types and sites
 notification_types = ['Fire Drill', 'System Update', 'Emergency Alert']
 sites = ['Head Office', 'Remote Site 1', 'Remote Site 2']
 
 @app.route('/')
+
 #
 #FUNCTION : mainTemplate
 #DESCRIPTION : This function looks for the main html file template to reference and prepare for modification.
