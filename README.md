@@ -47,7 +47,7 @@ The code we will use to initiiate the direct call to the Flask server so it only
       ```
 ### Run the application
 - python app.py
-- Open a web browser and go to whatever the URL address and port number you decide to use for the Flash server to interact with it. 
+- Open a web browser and go to whatever the URL address and port number you decide to use for the Flask server to interact with it. 
 - Logging
 - All notifications sent through the application are logged with a timestamp in the notifications.log file for auditing and tracking purposes.
 
