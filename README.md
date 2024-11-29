@@ -27,9 +27,9 @@ Flask_Application.py: The code we will use to initiiate the direct call to the F
 
 - Clone or download the repository.
 - Install the required dependencies:
- - bash
- - Copy code
- - pip install flask
+  - bash
+  - Copy code
+  - pip install flask
 ### Run the application:
 - bash
 - Copy code
