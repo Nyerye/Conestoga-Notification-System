@@ -1,7 +1,4 @@
-# Conestoga-Notification-System
-
-
-## Conestoga Notification System Concept
+# Conestoga Notification System Concept
 This Python Flask-based web application allows users to select a notification type and a target site, which then triggers the sending of a notification. The application logs the notifications and displays the selected notification type and site on a separate page.
 
 ## Features
