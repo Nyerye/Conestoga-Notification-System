@@ -25,16 +25,16 @@ Flask_Application.py: The code we will use to initiiate the direct call to the F
 
 ## How to use
 
-Clone or download the repository.
-Install the required dependencies:
-bash
-Copy code
-pip install flask
-Run the application:
-bash
-Copy code
-python app.py
-Open a web browser and go to whatever the URL address and port number you decide to use for the Flash server to interact with it. 
-Logging
-All notifications sent through the application are logged with a timestamp in the notifications.log file for auditing and tracking purposes.
+- Clone or download the repository.
+- Install the required dependencies:
+ - bash
+ - Copy code
+ - pip install flask
+### Run the application:
+- bash
+- Copy code
+- python app.py
+- Open a web browser and go to whatever the URL address and port number you decide to use for the Flash server to interact with it. 
+- Logging
+- All notifications sent through the application are logged with a timestamp in the notifications.log file for auditing and tracking purposes.
 
