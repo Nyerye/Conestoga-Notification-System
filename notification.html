@@ -1,0 +1,29 @@
+#HTML content for notification html file that will be used to display the final product to the end user for alerts
+notification_html_content = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Display</title>
+</head>
+<body>
+    <h1>Notification Sent</h1>
+    <p>Notification Type: {{ notif_type }}</p>
+    <p>Target Site: {{ site }}</p>
+    <p>Measures to be taken: Follow protocol as defined for {{ notif_type }}.</p>
+</body>
+</html>
+"""
+
+# Write the content paths in the Flask server to be found and written to
+menu_html_path = '/mnt/data/menu.html'
+notification_html_path = '/mnt/data/notification.html'
+
+with open(menu_html_path, 'w') as file:
+    file.write(menu_html_content)
+
+with open(notification_html_path, 'w') as file:
+    file.write(notification_html_content)
+
+menu_html_path, notification_html_path
