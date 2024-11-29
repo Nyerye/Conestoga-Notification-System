@@ -24,15 +24,12 @@ menu_and_notification_html_code: Includes the code for the two html files we wou
 Flask_Application.py: The code we will use to initiiate the direct call to the Flask server so it only ever runs when asked to. This takes away the need for an HTTP listener through PowerShell (the assumption I have that is the method of delivery of the notifcations used today).
 
 ## How to use
-
 - Clone or download the repository.
 - Install the required dependencies:
-  - bash
-  - Copy code
+  - Python 3.13
+  - Flask
   - pip install flask
-### Run the application:
-- bash
-- Copy code
+### Run the application
 - python app.py
 - Open a web browser and go to whatever the URL address and port number you decide to use for the Flash server to interact with it. 
 - Logging
