@@ -28,7 +28,10 @@ Flask_Application.py: The code we will use to initiiate the direct call to the F
 - Install the required dependencies:
   - Python 3.13
   - Flask
-  - pip install flask
+    - ```
+      pip install flask
+      ```
+  
 ### Run the application
 - python app.py
 - Open a web browser and go to whatever the URL address and port number you decide to use for the Flash server to interact with it. 
