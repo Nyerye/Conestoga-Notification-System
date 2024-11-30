@@ -13,6 +13,8 @@ import logging
 from datetime import datetime
 import ipaddress
 
+from werkzeug.serving import run_simple
+
 #Initialize the Flask application.
 app = Flask(__name__)
 
@@ -82,5 +84,6 @@ if __name__ == '__main__':
 
     #Allow external access to the server by binding to '0.0.0.0'
     logging.debug("Starting Flask server...")
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    print("Starting Flask server with werkzeug...")
+    run_simple('0.0.0.0', 5000, app, use_debugger=True, use_reloader=True)
     logging.debug("Flask server started.")
