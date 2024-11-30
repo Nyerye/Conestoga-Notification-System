@@ -84,7 +84,13 @@ def sendNotification():
 
     return redirectR,jsonifyR
 
-    
+@app.route('/notification')
+def notification():
+    notif_type = request.args.get('notif_type')
+    site = request.args.get('site')
+
+
+    return render_template('notification.html', notif_type=notif_type, site=site) 
 
 #Main entry point for running the Flask server.
 if __name__ == '__main__':
