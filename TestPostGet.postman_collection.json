@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "97d5dca0-3c92-47dd-9b30-a43fa1d12f7c",
+		"name": "Nick's Stuff",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27971199"
+	},
+	"item": [
+		{
+			"name": "http://192.168.1.64:5000/sendNotification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "notification_type",
+							"value": "Fire Drill",
+							"type": "text"
+						},
+						{
+							"key": "site",
+							"value": "Waterloo",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://192.168.1.65:5000/sendNotification",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"65"
+					],
+					"port": "5000",
+					"path": [
+						"sendNotification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.1.65:5000/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://192.168.1.65:5000/",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"1",
+						"65"
+					],
+					"port": "5000",
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
