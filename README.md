@@ -51,7 +51,8 @@ The code we will use to initiiate the direct call to the Flask server so it only
       ```
 ### Run the application
 - if dev use dev tool pack. 
-  - Run it, check log what the local ip address is 
+  - Run it, check log what the local ip address is
+  - Open ForUser.py and enter in the flask server ip address and port number(Default port number is 5000 but can be changed to any port)
 - Run Application  
   ```
   python Flask_Application.py
