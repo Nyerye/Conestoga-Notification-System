@@ -53,8 +53,8 @@ def devicesFromSite(site):
     return target_ips
 
 @app.route('/')
-def menu():
-    return render_template('menu.html')
+def notification():
+    return render_template('notification.html')
 
 ##Function name:    send_notification
 #Description:       Handles all POST requests from the UI. Extracts the value for notification.
