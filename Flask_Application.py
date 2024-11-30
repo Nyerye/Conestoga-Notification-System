@@ -80,9 +80,9 @@ def sendNotification():
     logging.info(log_message)
 
     Rredirect = redirect(url_for('notification', notif_type=notif_type, site=site))
-    Rjsonify = jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
+    #Rjsonify = jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
-    return Rredirect,Rjsonify
+    return Rredirect
 
 @app.route('/notification')
 def notification():
