@@ -48,14 +48,11 @@ The code we will use to initiiate the direct call to the Flask server so it only
       ```
       pip install -r requirements.txt
       ```
-  - if dev use dev tool pack. Run it, check log what the local ip address is
-  - Run Application  
-    ```
-    python Flask_Application.py
-    ```
 ### Run the application
-- python app.py
-- Open a web browser and go to whatever the URL address and port number you decide to use for the Flask server to interact with it. 
-- Logging
-- All notifications sent through the application are logged with a timestamp in the notifications.log file for auditing and tracking purposes.
+- if dev use dev tool pack. 
+  - Run it, check log what the local ip address is 
+- Run Application  
+  ```
+  python Flask_Application.py
+  ```
 
