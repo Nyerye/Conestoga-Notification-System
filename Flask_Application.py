@@ -84,7 +84,7 @@ def sendNotification():
 
     return redirectR,jsonifyR
 
-    #return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
+    
 
 #Main entry point for running the Flask server.
 if __name__ == '__main__':
