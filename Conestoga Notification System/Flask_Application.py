@@ -51,6 +51,10 @@ def devicesFromSite(site):
             target_ips.append(str(ip))
     return target_ips
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 ##Function name:    send_notification
 #Description:       Handles all POST requests from the UI. Extracts the value for notification.
 #                   type and the site to be able to start evaluating IP address within the subnet. If no devices are found
