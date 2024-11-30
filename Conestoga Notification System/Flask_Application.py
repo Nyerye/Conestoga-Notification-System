@@ -58,7 +58,7 @@ def devicesFromSite(site):
 #Parameters:        notification_type, the type of notification value picked up from the UI and site, the name of the site value
 #                   picked up from the UI.
 #Returns:           a response value, depending on whether or not connection was achieved. Inputs this into log file and displays on screen.
-@app.route('/send_notification', methods=['POST'])
+@app.route('/sendNotification', methods=['POST'])
 def sendNotification():
     notif_type = request.form.get('notification_type')
     site = request.form.get('site')
