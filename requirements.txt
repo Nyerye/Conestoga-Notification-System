@@ -5,6 +5,3 @@ flask-wtf
 jinja2
 werkzeug
 gunicorn
-render_template
-redirect
-url_for
