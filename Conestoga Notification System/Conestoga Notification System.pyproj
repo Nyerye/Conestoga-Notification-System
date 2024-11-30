@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>d843d523-370d-451f-88c5-e2dbce69b576</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Conestoga_Notification_System.py</StartupFile>
+    <StartupFile>DEVConestoga_Notification.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -21,8 +21,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Conestoga_Notification_System.py" />
+    <Compile Include="DEVConestoga_Notification.py" />
     <Compile Include="FlashApplication.py" />
+    <Compile Include="ForUserOnly.py" />
+    <Compile Include="notificationUI.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

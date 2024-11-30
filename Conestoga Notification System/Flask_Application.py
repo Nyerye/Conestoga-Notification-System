@@ -1,69 +1,83 @@
+#Title                      Flask_Application.py
+#Author:                    Nicholas Reilly
+#Initial date created:      October 2 2024
+#Description:               Main file where we would be hosting the new script in theory. As the script is determining successful connections, 
+#                           it will be logging information and errors to a text file which Tier 3 can use to review whether or not modifications are needed. 
+#                           If the script establishes a successful connection, it will then call upon a function that takes in the parameters for the type of
+#                           notification and the site location, and calls a Flask server to generate an alert with a premade html template that just fills in the blanks.
+#Credits to:                Wayne Pielsticker, debugging and test enviornment deployment.
 
-from flask import Flask, render_template, request, redirect, url_for
+#Imprting all packages required for code and other functions to work. 
+from flask import Flask, request, jsonify
 import logging
 from datetime import datetime
+import ipaddress
 
-#Initializes the Flask application to handle incoming requests and direct them to the appropriate routes.
+#Initialize the Flask application.
 app = Flask(__name__)
 
-#Configure the logging to collect info on Flask server processes
+#Configure logging to track activities and errors.
 logging.basicConfig(
-    filename='notifications.log', 
-    level=logging.INFO, 
-    format='%(asctime)s - %(message)s'
+    filename='notifications.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
-#Sample data: notification types and sites
-notification_types = ['Fire Drill', 'System Update', 'Emergency Alert']
-sites = ['Head Office', 'Remote Site 1', 'Remote Site 2']
-
-@app.route('/')
-
-#
-#FUNCTION : mainTemplate
-#DESCRIPTION : This function looks for the main html file template to reference and prepare for modification.
-#PARAMETERS : none
-#RETURNS : render_template. The modfied version of the base html template with the site name and notification type name populated. 
-def mainTemplate():
-    """Home route: display menu for selecting notification type and site."""
-    return render_template('menu.html', notification_types=notification_types, sites=sites)
+#Subnets for each site. Conestoga can adjust these as needed.
+site_subnets = {
+    "Guelph": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "Milton": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "Cambridge": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "Waterloo": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "Brantford": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "DTK": [ipaddress.IPv4Network("99.22.56.0/24")],
+    "Kitchener": [ipaddress.IPv4Network("99.22.56.0/24")],
 
 
-#Defines the send_notification route, which processes POST requests sent from the form submission.
+    #Developer, enter your subnet here where the address for controlled environment is. 
+    "TestDev": [ipaddress.IPv4Network("99.22.56.0/24")],
+}
+
+
+#Function name:     devices_from_site
+#Description:       Takes the site name and looks up IP address options. subnet.hosts generates all possible options excpet 0 and 255.  
+#Parameters:        site, the data value from the UI that holds the name of the site selected. 
+#Returns:           target_ips, the list fo all usable IP addresses that can be targeted. 
+def devicesFromSite(site):
+    subnets = site_subnets.get(site, [])
+    target_ips = []
+    for subnet in subnets:
+        for ip in subnet.hosts():
+            target_ips.append(str(ip))
+    return target_ips
+
+##Function name:    send_notification
+#Description:       Handles all POST requests from the UI. Extracts the value for notification.
+#                   type and the site to be able to start evaluating IP address within the subnet. If no devices are found
+#                   it will log an error message and display a 404 error.   
+#Parameters:        notification_type, the type of notification value picked up from the UI and site, the name of the site value
+#                   picked up from the UI.
+#Returns:           a response value, depending on whether or not connection was achieved. Inputs this into log file and displays on screen.
 @app.route('/send_notification', methods=['POST'])
-
-
-#
-#FUNCTION : sendNotification
-#DESCRIPTION :  Retrieves data from the form, logs the notification, and redirects to display the notification.
-#PARAMETERS : none
-#RETURNS : render_template. Retrieves data from the form, logs the notification, and redirects to display the notification. 
-def send_notification():
-    #Handles the form submission, logs the notification, and redirects to display it."""
+def sendNotification():
     notif_type = request.form.get('notification_type')
     site = request.form.get('site')
 
-    # Log the notification
-    log_message = f"Notification sent: {notif_type} to {site}"
-    app.logger.info(log_message)
+    #Get all valid IPs for the site.
+    target_ips = devicesFromSite(site)
+    if not target_ips:
+        log_message = f"No devices found in {site}."
+        logging.warning(log_message)
+        return jsonify({"error": log_message}), 404
 
-    # Redirect to display the notification
-    return redirect(url_for('display_notification', notif_type=notif_type, site=site))
+    #Log the notification action.
+    log_message = f"Notification '{notif_type}' sent to devices in {site}: {', '.join(target_ips)}"
+    logging.info(log_message)
 
-#Defines the display_notification route to show the notification.
-@app.route('/display_notification')
+    return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
-#
-#FUNCTION : displayNotification
-#DESCRIPTION :  Retrieves the notification type and site from query parameters and renders an HTML page.
-#PARAMETERS : none
-#RETURNS : render_template. Retrieves data from the form, logs the notification, and redirects to display the notification. 
-def displayNotification():
-    """Displays the notification based on user selection."""
-    notif_type = request.args.get('notif_type', 'Notification')
-    site = request.args.get('site', 'Unknown Site')
-    return render_template('notification.html', notif_type=notif_type, site=site)
-
-#Line is added so that way this code only runs when directly called. 
+#Main entry point for running the Flask server.
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+
+    #Allow external access to the server by binding to '0.0.0.0'
+    app.run(host='0.0.0.0', port=5000, debug=False) 
