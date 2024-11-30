@@ -38,6 +38,7 @@ Includes the code for the two html files we would add to the Flask servers templ
 The code we will use to initiiate the direct call to the Flask server so it only ever runs when asked to. This takes away the need for an HTTP listener through PowerShell (the assumption I have that is the method of delivery of the notifcations used today).
 
 # How to use
+### Requirements
 - Clone or download the repository.
 - Install the required dependencies:
   - Python 3.13
