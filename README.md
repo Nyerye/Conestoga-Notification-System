@@ -42,10 +42,15 @@ The code we will use to initiiate the direct call to the Flask server so it only
 - Install the required dependencies:
   - Python 3.13
   - Run requirments install
-    - ```
+      ```
       python.exe -m pip install --upgrade pip
+      ```
+      ```
       pip install -r requirements.txt
       ```
+    ```
+    python Flask_Application.py
+    ```
 ### Run the application
 - python app.py
 - Open a web browser and go to whatever the URL address and port number you decide to use for the Flask server to interact with it. 
