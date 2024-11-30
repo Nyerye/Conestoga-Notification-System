@@ -43,7 +43,8 @@ The code we will use to initiiate the direct call to the Flask server so it only
   - Python 3.13
   - Run requirments install
     - ```
-      pip install -r requirments.txt
+      python.exe -m pip install --upgrade pip
+      pip install -r requirements.txt
       ```
 ### Run the application
 - python app.py
