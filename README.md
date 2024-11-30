@@ -48,6 +48,8 @@ The code we will use to initiiate the direct call to the Flask server so it only
       ```
       pip install -r requirements.txt
       ```
+  - if dev use dev tool pack. Run it, check log what the local ip address is
+  - Run Application  
     ```
     python Flask_Application.py
     ```
