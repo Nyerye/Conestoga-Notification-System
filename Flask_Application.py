@@ -8,10 +8,11 @@
 #Credits to:                Wayne Pielsticker, debugging and test enviornment deployment.
 
 #Imprting all packages required for code and other functions to work. 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import logging
 from datetime import datetime
 import ipaddress
+
 
 #Initialize the Flask application.
 app = Flask(__name__)
