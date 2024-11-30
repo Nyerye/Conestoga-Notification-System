@@ -80,4 +80,6 @@ def sendNotification():
 if __name__ == '__main__':
 
     #Allow external access to the server by binding to '0.0.0.0'
-    app.run(host='0.0.0.0', port=5000, debug=False) 
+    logging.debug("Starting Flask server...")
+    app.run(host='0.0.0.0', port=5000, debug=True)
+    logging.debug("Flask server started.")
