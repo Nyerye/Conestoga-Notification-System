@@ -79,9 +79,9 @@ def sendNotification():
     log_message = f"Notification '{notif_type}' sent to devices in {site}: {', '.join(target_ips)}"
     logging.info(log_message)
 
-    return redirect(url_for('notification', notif_type=notif_type, site=site))
+    return redirect(url_for('notification', notif_type=notif_type, site=site)),jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
-    return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
+    #return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
 #Main entry point for running the Flask server.
 if __name__ == '__main__':
