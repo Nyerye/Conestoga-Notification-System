@@ -8,7 +8,7 @@
 #Credits to:                Wayne Pielsticker, debugging and test enviornment deployment.
 
 #Imprting all packages required for code and other functions to work. 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, redirect, url_for
 import logging
 from datetime import datetime
 import ipaddress
@@ -78,6 +78,8 @@ def sendNotification():
     #Log the notification action.
     log_message = f"Notification '{notif_type}' sent to devices in {site}: {', '.join(target_ips)}"
     logging.info(log_message)
+
+    return redirect(url_for('notification', notif_type=notif_type, site=site))
 
     return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
