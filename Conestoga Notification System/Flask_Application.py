@@ -77,7 +77,7 @@ def sendNotification():
     return jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
 
 #Main entry point for running the Flask server.
-if __name__ == '__main__':
+if app == '__main__':
 
     #Allow external access to the server by binding to '0.0.0.0'
     app.run(host='0.0.0.0', port=5000, debug=False) 
