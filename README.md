@@ -41,9 +41,9 @@ The code we will use to initiiate the direct call to the Flask server so it only
 - Clone or download the repository.
 - Install the required dependencies:
   - Python 3.13
-  - Flask
+  - Run requirments install
     - ```
-      pip install flask
+      pip install -r requirments.txt
       ```
 ### Run the application
 - python app.py
