@@ -53,6 +53,8 @@ The code we will use to initiiate the direct call to the Flask server so it only
 - if dev use dev tool pack. 
   - Run it, check log what the local ip address is
   - Open ForUser.py and enter in the flask server ip address and port number(Default port number is 5000 but can be changed to any port)
+  - Use postman to send a post that follows the same setup as this
+  ![Postman Post Image](C:\Users\wayne\Documents\Godot\Conestoga-Notification-System\postTest.png)
 - Run Application  
   ```
   python Flask_Application.py
