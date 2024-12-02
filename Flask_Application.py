@@ -52,17 +52,23 @@ def devicesFromSite(site):
             target_ips.append(str(ip))
     return target_ips
 
+
+#Function name:     menu
+#Description:       Calls the Flask Server and gets it to open the menu.html file witht he sent POST request
+#Parameters:        none
+#Returns:           render_template, which is the modified menu.html tempalte containing the site location and notifcation type. 
 @app.route('/')
 def menu():
     return render_template('menu.html')
 
-##Function name:    send_notification
+
+#Function name:    send_notification
 #Description:       Handles all POST requests from the UI. Extracts the value for notification.
 #                   type and the site to be able to start evaluating IP address within the subnet. If no devices are found
 #                   it will log an error message and display a 404 error.   
 #Parameters:        notification_type, the type of notification value picked up from the UI and site, the name of the site value
 #                   picked up from the UI.
-#Returns:           a response value, depending on whether or not connection was achieved. Inputs this into log file and displays on screen.
+#Returns:           rRedirect, the adress to where the notification is going to be sent. 
 @app.route('/sendNotification', methods=['POST'])
 def sendNotification():
     notif_type = request.form.get('notification_type')
@@ -79,17 +85,20 @@ def sendNotification():
     log_message = f"Notification '{notif_type}' sent to devices in {site}: {', '.join(target_ips)}"
     logging.info(log_message)
 
+    #Redirect the POST request to the notification route. 
     Rredirect = redirect(url_for('notification', notif_type=notif_type, site=site))
-    #Rjsonify = jsonify({"message": f"Notification '{notif_type}' sent to {site} successfully!"})
-
     return Rredirect
 
+#Function name:     notification
+#Description:       Calls the Flask Server and gets it to open the menu.html file witht he sent POST request
+#Parameters:        none
+#Returns:           render_template, which is the modified menu.html tempalte containing the site location and notifcation type. 
 @app.route('/notification')
 def notification():
+
+    #Retireve the site location and notification type from redirect URL.
     notif_type = request.args.get('notif_type')
     site = request.args.get('site')
-
-
     return render_template('notification.html', notif_type=notif_type, site=site) 
 
 #Main entry point for running the Flask server.
